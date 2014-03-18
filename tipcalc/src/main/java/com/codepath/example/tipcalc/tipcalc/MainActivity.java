@@ -1,8 +1,7 @@
 package com.codepath.example.tipcalc.tipcalc;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Editable;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,28 +33,33 @@ public class MainActivity extends ActionBarActivity {
                 String item = parent.getItemAtPosition(position).toString();
                 EditText etTotalAmount = (EditText) findViewById(R.id.etTotalAmount);
                 TextView tvTipAmount = (TextView) findViewById(R.id.tvTipAmount);
-                if (item != null){
-                    if (item.equals("10%")) {
-                        String amountText = etTotalAmount.getText().toString();
-                        double tip = 0;
-                        if (amountText != null) {
-                            double total = Double.parseDouble(amountText);
-                            tip = total * 0.1;
-                        }
-
-                        tvTipAmount.setText(String.valueOf(tip));
-
+                double percentage = 1;
+                if (item != null) {
+                    switch (item) {
+                        case "10%":
+                            percentage = 0.1;
+                            break;
+                        case "15%":
+                            percentage = 0.15;
+                            break;
+                        case "18%":
+                            percentage = 0.18;
+                            break;
+                        case "20%":
+                            percentage = 0.2;
+                            break;
+                        case "Custom...":
+                            percentage = 0.1;
+                            break;
                     }
+                    String amountText = etTotalAmount.getText().toString();
+                    double tip = 0;
+                    if (!amountText.isEmpty()) {
+                        double total = Double.parseDouble(amountText);
+                        tip = total * percentage;
+                    }
+                    tvTipAmount.setText(String.valueOf(String.format("%.2f", tip)));
                 }
-
-
-                Object item2 = parent.getItemAtPosition(position);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -75,10 +79,7 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
 }
