@@ -6,38 +6,133 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.codepath.example.tipcalc.tipcalc.MainActivity">
+    tools:context="com.codepath.example.tipcalc.tipcalc.MainActivity"
+    android:background="@drawable/paper">
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/etTotalAmount"
-        android:layout_marginTop="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spTip"
-        android:layout_below="@+id/etTotalAmount"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="48dp" />
+        android:ems="5"
+        android:id="@+id/etSubTotal"
+        android:textAlignment="gravity"
+        android:gravity="bottom|right"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/etTipPercent"
+        android:layout_alignStart="@+id/etTipPercent"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/tvTipAmount"
-        android:layout_below="@+id/spTip"
+        android:text="0.00"
+        android:id="@+id/tvTotal"
+        android:gravity="right"
+        android:layout_below="@+id/tvTipAmount"
+        android:layout_alignLeft="@+id/tvTipAmount"
+        android:layout_alignStart="@+id/tvTipAmount"
+        android:layout_alignRight="@+id/etTipPercent"
+        android:layout_alignEnd="@+id/etTipPercent"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="5"
+        android:id="@+id/etTipPercent"
+        android:layout_weight="3"
+        android:drawableRight="@drawable/dropdown_ic_arrow_normal_holo_dark"
+        android:drawablePadding="0dp"
+        android:layout_toLeftOf="@+id/tvPctMarker"
+        android:layout_below="@+id/etSubTotal"
+        android:textAlignment="gravity"
+        android:gravity="bottom|right" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tvPctMarker"
+        android:hint="%"
+        android:text="%"
+        android:layout_alignBottom="@+id/etTipPercent"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Subtotal"
+        android:id="@+id/tvSubtotalLabel"
+        android:layout_alignTop="@+id/etSubTotal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Tip Percentage"
+        android:id="@+id/tvTipPercentLabel"
+        android:layout_alignTop="@+id/tvPctMarker"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Tip Amount"
+        android:id="@+id/tvTipAmountLabel"
+        android:layout_alignTop="@+id/tvTipAmount"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Total"
+        android:id="@+id/tvTotalLabel"
+        android:layout_alignTop="@+id/tvTotal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0.00"
+        android:id="@+id/tvTipAmount"
+        android:layout_below="@+id/etTipPercent"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/etSubTotal"
+        android:layout_alignStart="@+id/etSubTotal"
+        android:gravity="right"
+        android:layout_alignRight="@+id/etTipPercent"
+        android:layout_marginRight="12dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/barcode" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="** THANK YOU **"
+        android:id="@+id/tvThankYou"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:typeface="serif" />
 
 </RelativeLayout>
